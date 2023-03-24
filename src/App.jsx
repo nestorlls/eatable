@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import Input from './components/Input/Input';
+import Login from './components/Login/Login';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <div>ello world</div>;
+  return (
+    <div>
+      <Login />
+    </div>
+  );
 }
 
 export default App;
