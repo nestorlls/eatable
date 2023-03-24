@@ -5,7 +5,9 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 50px;
-  padding: 5px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 48px;
 `;
 
 const StyledButton = styled.button`

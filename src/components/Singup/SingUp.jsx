@@ -1,32 +1,31 @@
 import React, { useState } from 'react';
-import Form from '../Form/Form';
 import { useAuth } from '../../context/AuthContext';
+import Form from '../Form/Form';
 
-const Login = () => {
-  const { login } = useAuth();
-
-  const [loginData, setLoginData] = useState({
+const SingUp = () => {
+  const { signUp } = useAuth();
+  const [signUpData, setSignUpData] = useState({
     email: '',
     password: '',
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setLoginData({ ...loginData, [name]: value });
+    setSignUpData({ ...signUpData, [name]: value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    login(loginData);
+    signUp(signUpData);
   };
 
   return (
     <div>
       <Form onChange={handleChange} onSubmit={handleSubmit}>
-        Login
+        Sing up
       </Form>
     </div>
   );
 };
 
-export default Login;
+export default SingUp;
