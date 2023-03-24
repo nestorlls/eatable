@@ -4,6 +4,8 @@ import { BsSearch } from 'react-icons/bs';
 import { getProducts } from '../../services/products-services';
 import ProductList from './ProductList';
 import styled from '@emotion/styled';
+import CategoryList from './CategoryList';
+import Price from './Price';
 
 const Container = styled.div`
   display: flex;
@@ -20,20 +22,47 @@ function filterByName(products, name) {
   return byName;
 }
 
+function filterByCategory(products, category) {
+  if (category === '') return products;
+
+  const byCategory = products.filter((product) =>
+    product.category === category ? product : null
+  );
+
+  return byCategory;
+}
+
 function filterProducts(products, filter) {
   const { name, category, price } = filter;
 
   const filteredByName = filterByName(products, name);
-  return filteredByName;
+  const filteredByCategory = filterByCategory(filteredByName, category);
+  return filteredByCategory;
+}
+
+function uniqueCategories(products) {
+  const arrayCategories = products.map((prod) => prod.category);
+
+  if (arrayCategories.length === 0) [];
+
+  const categories = new Set();
+  for (const cagetory of arrayCategories) {
+    categories.add(cagetory);
+  }
+
+  return [...categories];
 }
 
 const SearchPage = () => {
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState({
     name: '',
     category: '',
     price: { min: 0, max: Infinity },
   });
+
+  // unique categories
+  const uniqCategories = uniqueCategories(products);
 
   // products filtered
   const filteredProducts = filterProducts(products, filter);
@@ -45,6 +74,13 @@ const SearchPage = () => {
     });
   }
 
+  const handleCagetory = (event) => {
+    setFilter({
+      ...filter,
+      category: event.target.id,
+    });
+  };
+
   useEffect(() => {
     getProducts().then((products) => {
       setProducts(products);
@@ -55,6 +91,8 @@ const SearchPage = () => {
     <div>
       <BsSearch />
       <Input onChange={handleChange} />
+      <CategoryList uniqData={uniqCategories} onGetCategory={handleCagetory} />
+      <Price />
       <Container>
         <ProductList products={filteredProducts} />
       </Container>
