@@ -1,13 +1,15 @@
 import React from 'react';
-import { Route, Routes } from 'react-router';
-import SearchPage from '../Pages/SearchPage';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import SearchPage from '../Pages/Search/SearchPage';
 
 const AuthenticateApp = () => {
   return (
     <div>
-      <Routes>
-        <Route path='/search' element={<SearchPage />} />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<SearchPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
