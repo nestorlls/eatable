@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { login } from '../../services/auth-services';
 import Input from '../Input/Input';
 import { StyledButton, StyledForm } from './LoginUI';
 
@@ -8,16 +9,19 @@ const Login = () => {
     password: '',
   });
 
-  console.log(formData);
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    login(formData);
+  };
+
   return (
     <div>
-      <StyledForm action=''>
+      <StyledForm onSubmit={handleSubmit}>
         <Input
           label={'Email Address'}
           name={'email'}
@@ -28,9 +32,9 @@ const Login = () => {
         />
         <Input
           label={'Password'}
-          name={'email'}
-          id={'email'}
-          type={'email'}
+          name={'password'}
+          id={'password'}
+          type={'password'}
           placeholder='********'
           onChange={handleChange}
         />
