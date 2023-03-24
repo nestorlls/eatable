@@ -1,45 +1,30 @@
 import React, { useState } from 'react';
 import { login } from '../../services/auth-services';
 import Input from '../Input/Input';
-import { StyledButton, StyledForm } from './LoginUI';
+import { StyledButton, StyledForm } from '../Form/FormUI';
+import Form from '../Form/Form';
 
 const Login = () => {
-  const [formData, setFormData] = useState({
+  const [loginData, setLoginData] = useState({
     email: '',
     password: '',
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    setLoginData({ ...loginData, [name]: value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    login(formData);
+    login(loginData);
   };
 
   return (
     <div>
-      <StyledForm onSubmit={handleSubmit}>
-        <Input
-          label={'Email Address'}
-          name={'email'}
-          id={'email'}
-          type={'email'}
-          placeholder='example@mail.com'
-          onChange={handleChange}
-        />
-        <Input
-          label={'Password'}
-          name={'password'}
-          id={'password'}
-          type={'password'}
-          placeholder='********'
-          onChange={handleChange}
-        />
-        <StyledButton type='submit'>Login</StyledButton>
-      </StyledForm>
+      <Form onChange={handleChange} onSubmit={handleSubmit}>
+        Login
+      </Form>
     </div>
   );
 };
