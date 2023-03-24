@@ -4,13 +4,19 @@ import { colors, typography } from '../../styles';
 const StyledInput = styled.input`
   border: none;
   border-bottom: 1px solid ${colors.black};
-  padding: 5px 0;
+  padding: 10px 0;
   background: ${colors.gray.light};
   ${typography.text.md};
+
   &:focus {
     outline: none;
-    box-shadow: 0px 0.5px 1px 0.5px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0.5px 15px rgba(0, 0, 0, 0.2);
+    background-color: none;
+  }
+
+  &::placeholder {
+    color: ${colors.gray.dark};
   }
 `;
 
