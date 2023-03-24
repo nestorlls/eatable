@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
+import { createUser } from '../../services/user-services';
 import Form from '../Form/Form';
 
 const SingUp = () => {
-  const [formData, setFormData] = useState({
+  const [signUpData, setSignUpData] = useState({
     email: '',
     password: '',
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    setSignUpData({ ...signUpData, [name]: value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    login(formData);
+    createUser(signUpData);
   };
 
   return (
