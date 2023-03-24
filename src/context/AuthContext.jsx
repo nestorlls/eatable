@@ -5,7 +5,7 @@ import { tokenKey } from '../config';
 
 const AuthContext = createContext();
 
-function authProvider({ children }) {
+function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -59,4 +59,4 @@ function useAuth() {
   return useContext(AuthContext);
 }
 
-export { useAuth, authProvider };
+export { useAuth, AuthProvider };

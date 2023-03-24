@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { createUser } from '../../services/user-services';
+import { useAuth } from '../../context/AuthContext';
 import Form from '../Form/Form';
 
 const SingUp = () => {
+  const { signUp } = useAuth();
   const [signUpData, setSignUpData] = useState({
     email: '',
     password: '',
@@ -15,7 +16,7 @@ const SingUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createUser(signUpData);
+    signUp(signUpData);
   };
 
   return (

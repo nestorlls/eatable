@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { login } from '../../services/auth-services';
-import Input from '../Input/Input';
-import { StyledButton, StyledForm } from '../Form/FormUI';
 import Form from '../Form/Form';
+import { useAuth } from '../../context/AuthContext';
 
 const Login = () => {
+  const { login } = useAuth();
+
   const [loginData, setLoginData] = useState({
     email: '',
     password: '',
