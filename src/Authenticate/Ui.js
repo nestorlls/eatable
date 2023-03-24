@@ -36,24 +36,19 @@ const Nav = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100%;
-
-  & a {
-    padding: 10px;
-    width: 140px;
-    text-align: center;
-  }
-
-  & a.active {
-    border-bottom: 3px solid ${colors.orange};
-  }
 `;
 
-const StyledLink = {
-  textDecoration: 'none',
-  fontWeight: '600',
-  fontSize: '18px',
-  lineHeight: '23px',
-  color: `${colors.black}`,
-};
+const StyledLink = styled.button`
+  ${typography.text.lg}
+  border: none;
+  width: 130px;
+  padding: 8px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  background-color: ${colors.white};
+  &.active {
+    border-bottom: 4px solid ${colors.orange};
+  }
+`;
 
 export { Container, Eatable, Paragraph, Nav, StyledLink };
