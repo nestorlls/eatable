@@ -9,3 +9,19 @@ export const createUser = (userData) => {
   });
 };
 
+export function getUser() {
+  return apiFetch('/profile').then((u) => {
+    const { _token, ...user } = u;
+    return user;
+  });
+}
+
+export const upDateUser = (updateData) => {
+  return apiFetch('/profile', { method: 'PATCH', body: updateData }).then(
+    (u) => {
+      const { token, ...user } = u;
+      window.location.reload();
+      return user;
+    }
+  );
+};
