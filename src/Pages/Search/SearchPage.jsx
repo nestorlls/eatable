@@ -7,6 +7,7 @@ import styled from '@emotion/styled';
 import CategoryList from './CategoryList';
 import Price from './Price';
 import NotFound from './NotFound';
+import SearchInput from './SearchInput';
 
 const Container = styled.div`
   display: flex;
@@ -114,8 +115,7 @@ const SearchPage = () => {
 
   return (
     <div>
-      <BsSearch />
-      <Input onChange={handleChange} />
+      <SearchInput onHandleChange={handleChange} />
       {filteredProducts.length === 0 ? (
         <NotFound />
       ) : (

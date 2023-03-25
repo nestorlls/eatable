@@ -10,7 +10,7 @@ const ContainerInput = styled.div`
   gap: 10px;
 `;
 
-const StyledInput = styled.div`
+export const InputCont = styled.div`
   position: relative;
 `;
 
@@ -53,7 +53,7 @@ const Price = ({ onGetPriceRange }) => {
     >
       <p style={{ color: `${colors.black}` }}>Price</p>
       <ContainerInput>
-        <StyledInput>
+        <InputCont>
           <Input
             type='number'
             placeholder={'min'}
@@ -61,9 +61,9 @@ const Price = ({ onGetPriceRange }) => {
             onChange={onGetPriceRange}
           />
           <IconDollar />
-        </StyledInput>
+        </InputCont>
         <span>-</span>
-        <StyledInput>
+        <InputCont>
           <Input
             type='number'
             placeholder={'max'}
@@ -71,7 +71,7 @@ const Price = ({ onGetPriceRange }) => {
             onChange={onGetPriceRange}
           />
           <IconDollar />
-        </StyledInput>
+        </InputCont>
       </ContainerInput>
     </div>
   );

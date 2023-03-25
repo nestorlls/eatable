@@ -6,7 +6,7 @@ const Categories = styled.div`
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  padding: 0 20px;
+  padding: 40px 20px 0;
   /* overflow: hidden; */
 `;
 
