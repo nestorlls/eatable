@@ -148,7 +148,7 @@ const SearchPage = () => {
         )}
 
         <SearchInput onHandleChange={handleChange} />
-      </InputContainer> 
+      </InputContainer>
       {filteredProducts.length === 0 ? (
         <NotFound />
       ) : (
