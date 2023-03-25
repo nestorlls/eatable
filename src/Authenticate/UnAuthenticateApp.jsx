@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { NavLink, Route, Router, Routes } from 'react-router-dom';
 import eatable from '../assets/icons/eatable.svg';
 import Login from '../components/Login/Login';
 import SingUp from '../components/Singup/SingUp';
 import { Container, Eatable, Nav, Paragraph, StyledLink } from './Ui';
 
 const UnAuthenticateApp = () => {
-  const [showLogin, setShowLogin] = useState(true);
+  const [active, setActive] = useState('login');
 
-  const handleClick = (e) => {
-    e.precentDefault();
+  const handleClick = (event) => {
+    setActive(event.target.id);
   };
 
-  const isActive = ({ isActive }) => (isActive ? 'active' : '');
-
+  const inLogin = active === 'login' ? 'active' : '';
+  const isSignup = active === 'signup' ? 'active' : '';
+  
   return (
     <Container>
       <Eatable>
@@ -21,19 +21,20 @@ const UnAuthenticateApp = () => {
         <Paragraph>Foot for Everyone</Paragraph>
         <Nav>
           <Nav style={{ position: 'absolute', top: '40px' }}>
-            <NavLink style={StyledLink} to='/login' className={isActive}>
+            <StyledLink className={inLogin} id={'login'} onClick={handleClick}>
               Login
-            </NavLink>
-            <NavLink style={StyledLink} to='/signup' className={isActive}>
+            </StyledLink>
+            <StyledLink
+              className={isSignup}
+              id={'signup'}
+              onClick={handleClick}
+            >
               Sign up
-            </NavLink>
+            </StyledLink>
           </Nav>
         </Nav>
       </Eatable>
-      <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<SingUp />} />
-      </Routes>
+      {active === 'login' ? <Login /> : <SingUp />}
     </Container>
   );
 };
