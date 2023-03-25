@@ -6,6 +6,7 @@ import ProductList from './ProductList';
 import styled from '@emotion/styled';
 import CategoryList from './CategoryList';
 import Price from './Price';
+import NotFound from './NotFound';
 
 const Container = styled.div`
   display: flex;
@@ -115,11 +116,20 @@ const SearchPage = () => {
     <div>
       <BsSearch />
       <Input onChange={handleChange} />
-      <CategoryList uniqData={uniqCategories} onGetCategory={handleCagetory} />
-      <Price onGetPriceRange={handlePrice} />
-      <Container>
-        <ProductList products={filteredProducts} />
-      </Container>
+      {filteredProducts.length === 0 ? (
+        <NotFound />
+      ) : (
+        <>
+          <CategoryList
+            uniqData={uniqCategories}
+            onGetCategory={handleCagetory}
+          />
+          <Price onGetPriceRange={handlePrice} />
+          <Container>
+            <ProductList products={filteredProducts} />
+          </Container>
+        </>
+      )}
     </div>
   );
 };
