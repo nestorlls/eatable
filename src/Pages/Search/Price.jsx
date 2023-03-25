@@ -41,7 +41,7 @@ const IconDollar = styled(AiFillDollarCircle)`
   transform: translateY(-50%);
 `;
 
-const Price = () => {
+const Price = ({ onGetPriceRange }) => {
   return (
     <div
       style={{
@@ -54,12 +54,22 @@ const Price = () => {
       <p style={{ color: `${colors.black}` }}>Price</p>
       <ContainerInput>
         <StyledInput>
-          <Input type='number' placeholder={'min'} />
+          <Input
+            type='number'
+            placeholder={'min'}
+            id={'min'}
+            onChange={onGetPriceRange}
+          />
           <IconDollar />
         </StyledInput>
         <span>-</span>
         <StyledInput>
-          <Input type='number' placeholder={'max'} />
+          <Input
+            type='number'
+            placeholder={'max'}
+            id={'max'}
+            onChange={onGetPriceRange}
+          />
           <IconDollar />
         </StyledInput>
       </ContainerInput>

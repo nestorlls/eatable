@@ -13,6 +13,8 @@ const Container = styled.div`
   justify-content: center;
   margin-top: 50px;
 `;
+
+// filter by name
 function filterByName(products, name) {
   if (name === '') return products;
   const byName = products.filter((product) =>
@@ -22,6 +24,7 @@ function filterByName(products, name) {
   return byName;
 }
 
+// filter by category
 function filterByCategory(products, category) {
   if (category === '') return products;
 
@@ -32,12 +35,24 @@ function filterByCategory(products, category) {
   return byCategory;
 }
 
+// filter by price
+function filterByPrice(products, price) {
+  const { min, max } = price;
+  if (max === 0) return products;
+  const byPrice = products.filter((prod) =>
+    prod.price >= min && prod.price <= max ? prod : null
+  );
+
+  return byPrice;
+}
+
 function filterProducts(products, filter) {
   const { name, category, price } = filter;
 
   const filteredByName = filterByName(products, name);
   const filteredByCategory = filterByCategory(filteredByName, category);
-  return filteredByCategory;
+  const filteredByPrice = filterByPrice(filteredByCategory, price);
+  return filteredByPrice;
 }
 
 function uniqueCategories(products) {
@@ -81,6 +96,15 @@ const SearchPage = () => {
     });
   };
 
+  const handlePrice = (event) => {
+    const name = event.target.id;
+    const value = event.target.value;
+    setFilter({
+      ...filter,
+      price: { ...filter.price, [name]: +value * 100 },
+    });
+  };
+
   useEffect(() => {
     getProducts().then((products) => {
       setProducts(products);
@@ -92,7 +116,7 @@ const SearchPage = () => {
       <BsSearch />
       <Input onChange={handleChange} />
       <CategoryList uniqData={uniqCategories} onGetCategory={handleCagetory} />
-      <Price />
+      <Price onGetPriceRange={handlePrice} />
       <Container>
         <ProductList products={filteredProducts} />
       </Container>
