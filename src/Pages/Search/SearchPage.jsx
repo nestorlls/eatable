@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Input from '../../components/Input/Input';
 import { BsSearch } from 'react-icons/bs';
+import { IoIosArrowBack } from 'react-icons/io';
 import { getProducts } from '../../services/products-services';
 import ProductList from './ProductList';
 import styled from '@emotion/styled';
@@ -8,12 +8,35 @@ import CategoryList from './CategoryList';
 import Price from './Price';
 import NotFound from './NotFound';
 import SearchInput from './SearchInput';
+import { colors } from '../../styles';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 50px;
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+const IconSearch = styled(BsSearch)`
+  width: 20px;
+  height: 20px;
+  color: ${colors.black};
+  opacity: 0.7;
+`;
+
+const IconBack = styled(IoIosArrowBack)`
+  width: 20px;
+  height: 20px;
+  color: ${colors.black};
+  opacity: 0.7;
+  cursor: pointer;
 `;
 
 // filter by name
@@ -78,6 +101,8 @@ const SearchPage = () => {
     price: { min: 0, max: Infinity },
   });
 
+  const navigate = useNavigate();
+
   // unique categories
   const uniqCategories = uniqueCategories(products);
 
@@ -115,7 +140,15 @@ const SearchPage = () => {
 
   return (
     <div>
-      <SearchInput onHandleChange={handleChange} />
+      <InputContainer>
+        {filteredProducts.length !== products.length ? (
+          <IconBack onClick={() => navigate(-1)} />
+        ) : (
+          <IconSearch />
+        )}
+
+        <SearchInput onHandleChange={handleChange} />
+      </InputContainer> 
       {filteredProducts.length === 0 ? (
         <NotFound />
       ) : (

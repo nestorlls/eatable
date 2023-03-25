@@ -10,6 +10,7 @@ const StyledProduct = styled.div`
   border-radius: 30px;
   height: 212px;
   align-items: center;
+  cursor: pointer;
 `;
 
 const StyledImg = styled.img`
