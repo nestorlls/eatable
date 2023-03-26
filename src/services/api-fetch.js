@@ -20,8 +20,6 @@ export default async function apiFetch(
     };
   }
 
-  console.log(JSON.stringify(body));
-
   const config = {
     method: method || (body ? 'POST' : 'GET'),
     headers,

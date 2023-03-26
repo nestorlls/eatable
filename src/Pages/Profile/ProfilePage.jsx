@@ -5,8 +5,13 @@ import { useAuth } from '../../context/AuthContext';
 import { ProfileContainer, PageName, UserDataDiv } from './UI/ui';
 
 const ProfilePage = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const { name, email, phone, address } = user;
+
+  function handleLogOut() {
+    console.log('Hola ');
+    logout();
+  }
 
   return (
     <ProfileContainer>
@@ -24,7 +29,10 @@ const ProfilePage = () => {
         <p>{address}</p>
       </UserDataDiv>
       <>
-        <StyledButton style={{ width: '100%', marginTop: '335px' }}>
+        <StyledButton
+          style={{ width: '100%', marginTop: '335px' }}
+          onClick={handleLogOut}
+        >
           log out
         </StyledButton>
       </>
