@@ -24,7 +24,7 @@ const ProfilePage = () => {
         <p>{address}</p>
       </UserDataDiv>
       <>
-        <StyledButton style={{ width: '100%', marginTop: '350px' }}>
+        <StyledButton style={{ width: '100%', marginTop: '335px' }}>
           log out
         </StyledButton>
       </>

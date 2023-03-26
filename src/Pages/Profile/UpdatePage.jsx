@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
-import { PageName, UserDataDiv, Back } from './UI/ui';
+import { PageName, UserDataDiv, Back, ProfileContainer } from './UI/ui';
 import Input from '../../components/Input/Input';
 import { StyledButton } from '../../components/Form/FormUI';
 import { useAuth } from '../../context/AuthContext';
@@ -29,7 +29,7 @@ const UpdatePage = () => {
     upDate(data);
   };
   return (
-    <>
+    <ProfileContainer>
       <Back>
         <Link onClick={() => navigate(-1)} id='profile'>
           <IoIosArrowBack id='profile' />
@@ -74,11 +74,11 @@ const UpdatePage = () => {
             onChange={handleChange}
           />
         </UserDataDiv>
-        <StyledButton style={{ width: '100%', marginTop: '200px' }}>
+        <StyledButton style={{ width: '100%', marginTop: '208px' }}>
           Update
         </StyledButton>
       </form>
-    </>
+    </ProfileContainer>
   );
 };
 
