@@ -48,7 +48,7 @@ const Navitagate = () => {
   return (
     <>
       <Nav>
-        <NavLink to={'/search'} className={status}>
+        <NavLink to={'/'} className={status}>
           <IconHome />
         </NavLink>
         <NavLink to={'/profile'} className={status}>
