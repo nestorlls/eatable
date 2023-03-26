@@ -39,17 +39,16 @@ function AuthProvider({ children }) {
       .catch(console.log);
   }
 
-  function upDateUser(userData) {
+  function upDate(userData) {
+    console.log(userData);
     userSer
       .upDateUser(userData)
-      .then((u) => {
-        setUser(u);
-      })
+      .then((u) => setUser(u))
       .catch(console.log);
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, signUp, upDateUser }}>
+    <AuthContext.Provider value={{ user, login, logout, signUp, upDate }}>
       {children}
     </AuthContext.Provider>
   );

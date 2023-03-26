@@ -1,26 +1,33 @@
-import styled from '@emotion/styled';
-import React, { useEffect, useState } from 'react';
-import Profile from './Profile';
-import UpdatePage from './UpdatePage';
-
-const ProfileContainer = styled.div`
-  padding: 0 25px;
-`;
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { StyledButton } from '../../components/Form/FormUI';
+import { useAuth } from '../../context/AuthContext';
+import { ProfileContainer, PageName, UserDataDiv } from './UI/ui';
 
 const ProfilePage = () => {
-  const [page, setPage] = useState('profile');
-
-  function handlePage(event) {
-    event.preventDefault();
-    setPage(event.target.id);
-    console.log(event.target);
-  }
+  const { user } = useAuth();
+  const { name, email, phone, address } = user;
 
   return (
     <ProfileContainer>
       <h2>My Profile</h2>
-      {page === 'profile' && <Profile onProfile={handlePage} />}
-      {page === 'update' && <UpdatePage onUpdate={handlePage} />}
+      <PageName>
+        <h3>Personal details</h3>
+        <Link to={'update'} id='update'>
+          Change
+        </Link>
+      </PageName>
+      <UserDataDiv>
+        <p>{name}</p>
+        <p>{email}</p>
+        <p>{phone}</p>
+        <p>{address}</p>
+      </UserDataDiv>
+      <>
+        <StyledButton style={{ width: '100%', marginTop: '350px' }}>
+          log out
+        </StyledButton>
+      </>
     </ProfileContainer>
   );
 };
