@@ -6,7 +6,7 @@ import Input from '../../components/Input/Input';
 import { StyledButton } from '../../components/Form/FormUI';
 import { useAuth } from '../../context/AuthContext';
 
-const UpdatePage = ({ onUpdate }) => {
+const UpdatePage = () => {
   const navigate = useNavigate();
   const { upDate, user } = useAuth();
   const { name, email, phone, address } = user;

@@ -68,7 +68,26 @@ const PageName = styled.div`
 `;
 
 const Back = styled.div`
+  position: relative;
+  h2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 28px;
+    color: ${colors.black};
+  }
 
-`
+  a {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    :hover {
+      transform: scale(1.1);
+    }
+    :active {
+      color: ${colors.black};
+    }
+  }
+`;
 
 export { UserDataDiv, PageName, ProfileContainer, Back };
