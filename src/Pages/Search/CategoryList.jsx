@@ -12,16 +12,27 @@ const Categories = styled.div`
 
 const Button = styled.button`
   border: none;
-  padding: 8px;
+  padding: 3px 8px;
+  margin: 5px 0;
   background-color: ${colors.gray.medium};
   color: ${colors.gray.dark};
+
+  &.active {
+    border-bottom: 2px solid ${colors.orange};
+    color: ${colors.orange};
+  }
 `;
 
-const CategoryList = ({ uniqData, onGetCategory }) => {
+const CategoryList = ({ uniqData, onGetCategory, nameCategory }) => {
+  console.log('desde', nameCategory);
   return (
     <Categories onClick={onGetCategory}>
       {uniqData.map((category, index) => (
-        <Button key={index} id={category}>
+        <Button
+          key={index}
+          id={category}
+          className={category === nameCategory ? 'active' : ''}
+        >
           {category}
         </Button>
       ))}

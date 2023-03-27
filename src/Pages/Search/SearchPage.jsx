@@ -85,6 +85,13 @@ const SearchPage = ({ onGetID }) => {
     });
   }
 
+  function handleBack() {
+    setFilter({
+      ...filter,
+      name: '',
+    });
+  }
+
   const handleCagetory = (event) => {
     setFilter({
       ...filter,
@@ -108,10 +115,10 @@ const SearchPage = ({ onGetID }) => {
   }, []);
 
   return (
-    <div>
+    <>
       <InputContainer>
         {filteredProducts.length !== products.length ? (
-          <IconBack onClick={() => navigate(-1)} />
+          <IconBack onClick={handleBack} />
         ) : (
           <IconSearch />
         )}
@@ -125,6 +132,7 @@ const SearchPage = ({ onGetID }) => {
           <CategoryList
             uniqData={uniqCategories}
             onGetCategory={handleCagetory}
+            nameCategory={filter.category}
           />
           <Price onGetPriceRange={handlePrice} />
           <Container>
@@ -133,7 +141,7 @@ const SearchPage = ({ onGetID }) => {
           </Container>
         </>
       )}
-    </div>
+    </>
   );
 };
 

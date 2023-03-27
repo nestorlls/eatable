@@ -14,7 +14,7 @@ const AuthenticateApp = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<SearchPage onGetID={setID} />} />
-          <Route path='/products/:id' element={<ShowDish productID={ id} />} />
+          <Route path='/products/:id' element={<ShowDish productID={id} />} />
           <Route path='/profile' element={<ProfilePage />} />
           <Route path='/profile/update' element={<UpdatePage />} />
         </Routes>

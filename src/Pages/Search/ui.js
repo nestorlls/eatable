@@ -5,17 +5,16 @@ import { AiFillDollarCircle } from 'react-icons/ai';
 import { colors, typography } from '../../styles';
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 70px;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
+  max-width: 768px;
+  margin: auto;
+  padding: 0 15px;
+
   p {
     font-weight: 600;
-    font-size: 28px;
-    line-height: 35px;
+    font-size: 24px;
+    line-height: 25px;
     color: ${colors.black};
+    text-align: center;
   }
 `;
 
@@ -47,7 +46,14 @@ const StyledProduct = styled.div`
   box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
   border-radius: 30px;
   height: 212px;
+  width: 156px;
   align-items: center;
+  margin: 40px auto 0 auto;
+
+  @media (max-width: 320px) {
+    height: 250px;
+    width: 250px;
+  }
 `;
 
 const StyledImg = styled.img`
@@ -60,15 +66,22 @@ const StyledImg = styled.img`
 `;
 
 const ContainerPrice = styled.div`
-  ${typography.text.lg}
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 0 8px;
+  padding: 0 5px;
   text-align: center;
-  margin-top: 110px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 115px;
+
+  p {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 28px;
+  }
 `;
 
 const ContainerInput = styled.div`
