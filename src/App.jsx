@@ -1,25 +1,44 @@
-import styled from '@emotion/styled';
+import { useEffect, useState } from 'react';
+import { Bg, Circle, Container, Loading, LoadingContainer, Section } from './AppUi';
 import AuthenticateApp from './Authenticate/AuthenticateApp';
 import UnAuthenticateApp from './Authenticate/UnAuthenticateApp';
 import { useAuth } from './context/AuthContext';
+import eatable from './assets/icons/eatable.svg';
+import bg from './assets/brooke-lark-HlNcigvUi4Q-unsplash.jpg';
 
-const Section = styled.section`
-  margin: 75px auto;
-`;
-
-const Container = styled.div`
-  max-width: 768px;
-  margin: 0 auto;
-  position: relative;
-`;
+const LoadingPage = () => {
+  return (
+    <LoadingContainer>
+      <Bg src={bg} alt='bg' />
+      <Circle>
+        <img src={eatable} alt='eatable' />
+        <p>Food for Everyone</p>
+        <Loading></Loading>
+      </Circle>
+    </LoadingContainer>
+  );
+};
 
 function App() {
   const { user } = useAuth();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, []);
+
   return (
     <Section>
-      <Container>
-        {user ? <AuthenticateApp /> : <UnAuthenticateApp />}
-      </Container>
+      {loading && !user ? (
+        <LoadingPage />
+      ) : (
+        <Container>
+          {user ? <AuthenticateApp /> : <UnAuthenticateApp />}
+        </Container>
+      )}
     </Section>
   );
 }

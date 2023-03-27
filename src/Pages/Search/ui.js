@@ -38,6 +38,7 @@ const IconBack = styled(IoIosArrowBack)`
   color: ${colors.black};
   opacity: 0.7;
   cursor: pointer;
+  margin: 0 10px;
 `;
 
 const StyledProduct = styled.div`
