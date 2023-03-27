@@ -40,7 +40,6 @@ function AuthProvider({ children }) {
   }
 
   function upDate(userData) {
-    console.log(userData);
     userSer
       .upDateUser(userData)
       .then((u) => setUser(u))

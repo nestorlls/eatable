@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
-import React from 'react'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import Product from './Product';
 
 const breakpoints = [320, 375, 425, 768, 1024];
@@ -30,14 +32,20 @@ const StyledProductList = styled.div`
   }
 `;
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, onGetID }) => {
   return (
     <StyledProductList>
       {products?.map((product) => (
-        <Product key={product.id} product={product} />
+        <Link
+          key={product.id}
+          to={`/products/${product.id}`}
+          onClickCapture={() => onGetID(product.id)}
+        >
+          <Product product={product} />
+        </Link>
       ))}
     </StyledProductList>
   );
 };
 
-export default ProductList
+export default ProductList;
