@@ -6,3 +6,12 @@ export function getProducts() {
     return response;
   });
 }
+
+export function getProduct(id) {
+  return apiFetch(`/products/${id}`)
+    .then((prod) => {
+      const product = prod;
+      return product;
+    })
+    .catch(console.log);
+}

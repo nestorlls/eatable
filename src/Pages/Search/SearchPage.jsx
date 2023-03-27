@@ -1,43 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { BsSearch } from 'react-icons/bs';
-import { IoIosArrowBack } from 'react-icons/io';
 import { getProducts } from '../../services/products-services';
 import ProductList from './ProductList';
-import styled from '@emotion/styled';
 import CategoryList from './CategoryList';
 import Price from './Price';
 import NotFound from './NotFound';
 import SearchInput from './SearchInput';
-import { colors } from '../../styles';
 import { useNavigate } from 'react-router-dom';
-
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-`;
-
-const InputContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-`;
-
-const IconSearch = styled(BsSearch)`
-  width: 20px;
-  height: 20px;
-  color: ${colors.black};
-  opacity: 0.7;
-`;
-
-export const IconBack = styled(IoIosArrowBack)`
-  width: 20px;
-  height: 20px;
-  color: ${colors.black};
-  opacity: 0.7;
-  cursor: pointer;
-`;
+import { Container, IconBack, IconSearch, InputContainer } from './ui';
 
 // filter by name
 function filterByName(products, name) {
@@ -93,7 +62,7 @@ function uniqueCategories(products) {
   return [...categories];
 }
 
-const SearchPage = () => {
+const SearchPage = ({ onGetID }) => {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState({
     name: '',
@@ -159,7 +128,7 @@ const SearchPage = () => {
           />
           <Price onGetPriceRange={handlePrice} />
           <Container>
-            <ProductList products={filteredProducts} />
+            <ProductList products={filteredProducts} onGetID={onGetID} />
           </Container>
         </>
       )}
