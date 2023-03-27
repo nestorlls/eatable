@@ -1,8 +1,10 @@
 import React from 'react';
+import { useAuth } from '../../context/AuthContext';
 import Input from '../Input/Input';
 import { StyledButton, StyledForm } from './FormUI';
 
 const Form = ({ onChange, onSubmit, children }) => {
+  const { errorLogin } = useAuth();
   return (
     <StyledForm onSubmit={onSubmit}>
       <Input
@@ -21,6 +23,7 @@ const Form = ({ onChange, onSubmit, children }) => {
         placeholder='********'
         onChange={onChange}
       />
+      <span>{errorLogin.message}</span>
       <StyledButton type='submit'>{children}</StyledButton>
     </StyledForm>
   );

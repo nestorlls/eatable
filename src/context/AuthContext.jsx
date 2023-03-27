@@ -7,6 +7,11 @@ const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [statusError, setErrorLogin] = useState({
+    login: {},
+    signUp: {},
+    
+  });
 
   useEffect(() => {
     userSer
@@ -19,13 +24,13 @@ function AuthProvider({ children }) {
     auth
       .login(credentials)
       .then((u) => setUser(u))
-      .catch(console.log);
+      .catch((error) => setErrorLogin(error));
   }
 
   function logout() {
     auth
       .logout()
-      .then((u) => {
+      .then(() => {
         sessionStorage.removeItem(tokenKey);
         setUser(null);
       })
@@ -47,7 +52,9 @@ function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, signUp, upDate }}>
+    <AuthContext.Provider
+      value={{ user, login, logout, signUp, upDate, errorLogin }}
+    >
       {children}
     </AuthContext.Provider>
   );

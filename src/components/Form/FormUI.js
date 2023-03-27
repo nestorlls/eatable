@@ -8,6 +8,13 @@ const StyledForm = styled.form`
   padding-left: 16px;
   padding-right: 16px;
   margin-top: 48px;
+
+  span{
+    color: red;
+    text-align:center;
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -18,7 +25,7 @@ const StyledButton = styled.button`
   padding: 24px 0;
   border-radius: 30px;
   letter-spacing: 0.5px;
-  margin-top: 200px;
+  margin-top: 90px;
   cursor: pointer;
   &:hover {
     background-color: #ec4910;

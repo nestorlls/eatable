@@ -37,7 +37,7 @@ export default async function apiFetch(
     try {
       data = await response.json();
     } catch (error) {
-      throw new Error(response.statusText);
+      data = new Error(response.statusText);
     }
     throw new Error(data.errors);
   }
@@ -47,6 +47,5 @@ export default async function apiFetch(
   } catch (error) {
     data = response.statusText;
   }
-
   return data;
 }

@@ -9,7 +9,6 @@ const ProfilePage = () => {
   const { name, email, phone, address } = user;
 
   function handleLogOut() {
-    console.log('Hola ');
     logout();
   }
 
