@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { colors } from "./styles";
 
 const Section = styled.section`
-  margin: 30px auto;
+  margin: 65px auto;
 `;
 
 const Container = styled.div`
@@ -60,7 +60,7 @@ const Loading = styled.div`
   border-color: ${colors.orange} ${colors.orange} ${colors.orange} transparent;
   border-radius: 50%;
   animation: spin-anim 1.2s linear infinite;
-  
+
   @keyframes spin-anim {
     0% {
       transform: rotate(0deg);
