@@ -128,6 +128,7 @@ const SearchPage = ({ onGetID }) => {
           />
           <Price onGetPriceRange={handlePrice} />
           <Container>
+            {filter.name && <p>Found {filteredProducts.length} results</p>}
             <ProductList products={filteredProducts} onGetID={onGetID} />
           </Container>
         </>

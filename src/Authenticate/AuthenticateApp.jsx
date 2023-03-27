@@ -9,7 +9,6 @@ import ShowDish from '../Pages/ShowDish/ShowDish';
 const AuthenticateApp = () => {
   const [id, setID] = useState(0);
 
-  console.log(id);
   return (
     <>
       <BrowserRouter>

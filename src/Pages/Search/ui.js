@@ -6,9 +6,17 @@ import { colors, typography } from '../../styles';
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 70px;
   align-items: center;
   justify-content: center;
   margin-top: 50px;
+  p {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 35px;
+    color: ${colors.black};
+  }
 `;
 
 const InputContainer = styled.div`
