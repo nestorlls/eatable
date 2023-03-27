@@ -63,12 +63,14 @@ function uniqueCategories(products) {
 }
 
 const SearchPage = ({ onGetID }) => {
-  const [products, setProducts] = useState([]);
-  const [filter, setFilter] = useState({
+  const initialFilter = {
     name: '',
     category: '',
     price: { min: 0, max: Infinity },
-  });
+  };
+
+  const [products, setProducts] = useState([]);
+  const [filter, setFilter] = useState(initialFilter);
 
   const navigate = useNavigate();
 
@@ -86,10 +88,7 @@ const SearchPage = ({ onGetID }) => {
   }
 
   function handleBack() {
-    setFilter({
-      ...filter,
-      name: '',
-    });
+    setFilter(initialFilter);
   }
 
   const handleCagetory = (event) => {
@@ -109,9 +108,11 @@ const SearchPage = ({ onGetID }) => {
   };
 
   useEffect(() => {
-    getProducts().then((products) => {
-      setProducts(products);
-    });
+    getProducts()
+      .then((products) => {
+        setProducts(products);
+      })
+      .catch(console.error);
   }, []);
 
   return (

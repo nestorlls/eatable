@@ -24,7 +24,6 @@ const Button = styled.button`
 `;
 
 const CategoryList = ({ uniqData, onGetCategory, nameCategory }) => {
-  console.log('desde', nameCategory);
   return (
     <Categories onClick={onGetCategory}>
       {uniqData.map((category, index) => (

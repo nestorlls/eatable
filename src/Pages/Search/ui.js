@@ -29,6 +29,7 @@ const IconSearch = styled(BsSearch)`
   height: 20px;
   color: ${colors.black};
   opacity: 0.7;
+  margin-left: 15px;
 `;
 
 const IconBack = styled(IoIosArrowBack)`
