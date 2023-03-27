@@ -51,6 +51,7 @@ const ShowDish = ({ productID }) => {
             position: 'absolute',
             marginTop: '0',
           }}
+          onClick={() => navigate(-1)}
         >
           Go back
         </StyledButton>
