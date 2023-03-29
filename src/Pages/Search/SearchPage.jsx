@@ -5,14 +5,13 @@ import CategoryList from './CategoryList';
 import Price from './Price';
 import NotFound from './NotFound';
 import SearchInput from './SearchInput';
-import { useNavigate } from 'react-router-dom';
 import { Container, IconBack, IconSearch, InputContainer } from './ui';
 
 // filter by name
 function filterByName(products, name) {
   if (name === '') return products;
   const byName = products.filter((product) =>
-    product.name.includes(name) ? product : null
+    product.name.includes(name.toLowerCase()) ? product : null
   );
 
   return byName;
@@ -40,6 +39,7 @@ function filterByPrice(products, price) {
   return byPrice;
 }
 
+// filtered products
 function filterProducts(products, filter) {
   const { name, category, price } = filter;
 
@@ -49,6 +49,7 @@ function filterProducts(products, filter) {
   return filteredByPrice;
 }
 
+// unique categories
 function uniqueCategories(products) {
   const arrayCategories = products.map((prod) => prod.category);
 
@@ -71,8 +72,6 @@ const SearchPage = ({ onGetID }) => {
 
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState(initialFilter);
-
-  const navigate = useNavigate();
 
   // unique categories
   const uniqCategories = uniqueCategories(products);
@@ -117,25 +116,30 @@ const SearchPage = ({ onGetID }) => {
 
   return (
     <>
-      <InputContainer>
-        {filteredProducts.length !== products.length ? (
-          <IconBack onClick={handleBack} />
-        ) : (
-          <IconSearch />
-        )}
-
-        <SearchInput onHandleChange={handleChange} />
-      </InputContainer>
-      {filteredProducts.length === 0 ? (
-        <NotFound />
-      ) : (
+      <>
+        <InputContainer>
+          {/* Not found */}
+          {filteredProducts.length !== products.length ? (
+            <IconBack onClick={handleBack} />
+          ) : (
+            <IconSearch />
+          )}
+          <SearchInput onHandleChange={handleChange} />
+        </InputContainer>
+      </>
+      {!filteredProducts.length && <NotFound />}
+      {filteredProducts.length && (
         <>
-          <CategoryList
-            uniqData={uniqCategories}
-            onGetCategory={handleCagetory}
-            nameCategory={filter.category}
-          />
-          <Price onGetPriceRange={handlePrice} />
+          {filter.name === '' && (
+            <>
+              <CategoryList
+                uniqData={uniqCategories}
+                onGetCategory={handleCagetory}
+                nameCategory={filter.category}
+              />
+              <Price onGetPriceRange={handlePrice} />
+            </>
+          )}
           <Container>
             {filter.name && <p>Found {filteredProducts.length} results</p>}
             <ProductList products={filteredProducts} onGetID={onGetID} />
