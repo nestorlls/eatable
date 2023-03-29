@@ -7,30 +7,37 @@ import { IconBack } from '../Search/ui';
 import { ButtonContainer, DishContainer, Info } from './ui';
 
 const ShowDish = ({ productID }) => {
-  const navigate = useNavigate();
-  const [product, setProduct] = useState({
+  const initial = {
     id: 0,
     name: '',
     category: '',
     price: 0,
     description: '',
     picture_url: '',
-  });
+  };
+
+  const prod = JSON.parse(localStorage.getItem('prod'));
+  const navigate = useNavigate();
+  const [product, setProduct] = useState(prod || initial);
 
   const { name, category, price, description, picture_url } = product;
 
   useEffect(() => {
     getProduct(productID)
       .then((prod) => {
-        setProduct({
-          ...product,
-          id: prod.id,
-          name: prod.name,
-          price: prod.price,
-          category: prod.category,
-          description: prod.description,
-          picture_url: prod.picture_url,
-        });
+        localStorage.setItem(
+          'prod',
+          JSON.stringify({
+            ...product,
+            id: prod.id,
+            name: prod.name,
+            price: prod.price,
+            category: prod.category,
+            description: prod.description,
+            picture_url: prod.picture_url,
+          })
+        );
+        setProduct(prod);
       })
       .catch(console.error);
   }, []);
