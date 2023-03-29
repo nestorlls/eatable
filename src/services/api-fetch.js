@@ -36,10 +36,11 @@ export default async function apiFetch(
     }
     try {
       data = await response.json();
+      data = JSON.stringify(data);
     } catch (error) {
       data = new Error(response.statusText);
     }
-    throw new Error(data.errors);
+    throw new Error(data);
   }
 
   try {
