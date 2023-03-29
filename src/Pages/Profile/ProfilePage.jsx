@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { StyledButton } from '../../components/Form/FormUI';
 import { useAuth } from '../../context/AuthContext';
-import { ProfileContainer, PageName, UserDataDiv } from './UI/ui';
+import { ProfileContainer, PageName, UserDataDiv, ProfileIcon } from './UI/ui';
+import { FaUserAlt } from 'react-icons/fa';
 
 const ProfilePage = () => {
   const { user, logout } = useAuth();
@@ -15,6 +16,11 @@ const ProfilePage = () => {
   return (
     <ProfileContainer>
       <h2>My Profile</h2>
+      <ProfileIcon>
+        <div>
+          <FaUserAlt />
+        </div>
+      </ProfileIcon>
       <PageName>
         <h3>Personal details</h3>
         <Link to={'update'} id='update'>
@@ -29,7 +35,7 @@ const ProfilePage = () => {
       </UserDataDiv>
       <>
         <StyledButton
-          style={{ width: '100%', marginTop: '335px' }}
+          style={{ width: '100%', marginTop: '229px' }}
           onClick={handleLogOut}
         >
           log out

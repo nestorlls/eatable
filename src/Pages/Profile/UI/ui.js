@@ -13,6 +13,28 @@ const ProfileContainer = styled.div`
   }
 `;
 
+const ProfileIcon = styled.div`
+  display: flex;
+  margin: 20px auto;
+  div {
+    background-color: ${colors.white};
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    box-shadow: 0px 8px 15px ${colors.gray.dark};
+
+    svg {
+      width: 80px;
+      height: 80px;
+      margin: 50px auto;
+    }
+  }
+`;
+
 const UserDataDiv = styled.div`
   background-color: ${colors.white};
   display: flex;
@@ -90,4 +112,4 @@ const Back = styled.div`
   }
 `;
 
-export { UserDataDiv, PageName, ProfileContainer, Back };
+export { UserDataDiv, PageName, ProfileContainer, Back, ProfileIcon };

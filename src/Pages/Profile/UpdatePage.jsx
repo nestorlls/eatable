@@ -1,22 +1,30 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
-import { PageName, UserDataDiv, Back, ProfileContainer } from './UI/ui';
+import {
+  PageName,
+  UserDataDiv,
+  Back,
+  ProfileContainer,
+  ProfileIcon,
+} from './UI/ui';
 import Input from '../../components/Input/Input';
 import { StyledButton } from '../../components/Form/FormUI';
 import { useAuth } from '../../context/AuthContext';
+import { FaUserAlt } from 'react-icons/fa';
 
 const UpdatePage = () => {
   const navigate = useNavigate();
   const { upDate, user } = useAuth();
-  const { name, email, phone, address } = user;
 
   const [data, setData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
+    name: user.name,
+    email: user.email,
+    phone: user.phone,
+    address: user.address,
   });
+
+  const { name, email, phone, address } = data;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -35,6 +43,11 @@ const UpdatePage = () => {
           <IoIosArrowBack id='profile' />
         </Link>
         <h2>My Profile</h2>
+        <ProfileIcon>
+          <div>
+            <FaUserAlt />
+          </div>
+        </ProfileIcon>
       </Back>
       <PageName>
         <h3>Update personal details</h3>
@@ -47,6 +60,7 @@ const UpdatePage = () => {
             id={'name'}
             type={'name'}
             placeholder={name}
+            value={name}
             onChange={handleChange}
           />
           <Input
@@ -55,6 +69,7 @@ const UpdatePage = () => {
             id={'email'}
             type={'email'}
             placeholder={email}
+            value={email}
             onChange={handleChange}
           />
           <Input
@@ -63,6 +78,7 @@ const UpdatePage = () => {
             id={'phone'}
             type={'phone'}
             placeholder={phone}
+            value={phone}
             onChange={handleChange}
           />
           <Input
@@ -71,10 +87,11 @@ const UpdatePage = () => {
             id={'address'}
             type={'address'}
             placeholder={address}
+            value={address}
             onChange={handleChange}
           />
         </UserDataDiv>
-        <StyledButton style={{ width: '100%', marginTop: '208px' }}>
+        <StyledButton style={{ width: '100%', marginTop: '70px' }}>
           Update
         </StyledButton>
       </form>
