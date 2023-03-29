@@ -1,10 +1,16 @@
 import React from 'react';
-import { useAuth } from '../../context/AuthContext';
 import Input from '../Input/Input';
 import { StyledButton, StyledForm } from './FormUI';
 
-const Form = ({ onChange, onSubmit, children }) => {
-  const { errorLogin } = useAuth();
+const Form = ({
+  onChange,
+  onSubmit,
+  children,
+  page,
+  loginError,
+  email,
+  password,
+}) => {
   return (
     <StyledForm onSubmit={onSubmit}>
       <Input
@@ -14,6 +20,7 @@ const Form = ({ onChange, onSubmit, children }) => {
         type={'email'}
         placeholder='example@mail.com'
         onChange={onChange}
+        error={email}
       />
       <Input
         label={'Password'}
@@ -22,9 +29,12 @@ const Form = ({ onChange, onSubmit, children }) => {
         type={'password'}
         placeholder='********'
         onChange={onChange}
+        error={password}
       />
-      <span>{errorLogin.message}</span>
-      <StyledButton type='submit'>{children}</StyledButton>
+      <StyledButton type='submit' style={{ marginTop: '130px' }}>
+        {children}
+      </StyledButton>
+      {page && <span>{loginError}</span>}
     </StyledForm>
   );
 };

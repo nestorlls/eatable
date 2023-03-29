@@ -34,7 +34,7 @@ const UnAuthenticateApp = () => {
           </Nav>
         </Nav>
       </Eatable>
-      {active === 'login' ? <Login /> : <SingUp />}
+      {active === 'login' ? <Login page={inLogin} /> : <SingUp />}
     </Container>
   );
 };

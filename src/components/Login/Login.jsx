@@ -2,8 +2,17 @@ import React, { useState } from 'react';
 import Form from '../Form/Form';
 import { useAuth } from '../../context/AuthContext';
 
-const Login = () => {
+const Login = ({ page }) => {
   const { login } = useAuth();
+  const { statusError } = useAuth();
+  const { loginError } = statusError;
+
+  let data, loginErrors;
+  if (loginError.message) {
+    data = JSON.parse(loginError.message);
+    loginErrors = data.errors;
+  }
+  console.log(loginErrors);
 
   const [loginData, setLoginData] = useState({
     email: '',
@@ -21,11 +30,16 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <Form onChange={handleChange} onSubmit={handleSubmit}>
+    <>
+      <Form
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        page={page}
+        loginError={loginErrors || ''}
+      >
         Login
       </Form>
-    </div>
+    </>
   );
 };
 

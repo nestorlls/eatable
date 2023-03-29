@@ -11,7 +11,7 @@ const Container = styled.div`
 
   p {
     font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 25px;
     color: ${colors.black};
     text-align: center;
@@ -124,6 +124,10 @@ const IconDollar = styled(AiFillDollarCircle)`
   transform: translateY(-50%);
 `;
 
+const Result = styled.p`
+  margin: 50px 0;
+`
+
 export {
   Container,
   InputContainer,
@@ -136,4 +140,5 @@ export {
   InputCont,
   InputMinMax,
   IconDollar,
+  Result,
 };

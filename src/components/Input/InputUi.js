@@ -7,6 +7,7 @@ const StyledInput = styled.input`
   padding: 5px 0;
   background: transparent;
   ${typography.text.md};
+  
   &:focus {
     outline: none;
   }

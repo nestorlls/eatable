@@ -9,6 +9,7 @@ const Input = ({
   value,
   onChange,
   placeholder,
+  error,
 }) => {
   return (
     <InputContainer>
@@ -21,6 +22,7 @@ const Input = ({
         value={value}
         placeholder={placeholder}
       />
+      <span>{error}</span>
     </InputContainer>
   );
 };

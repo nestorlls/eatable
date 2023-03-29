@@ -8,6 +8,17 @@ const SingUp = () => {
     email: '',
     password: '',
   });
+  const { statusError } = useAuth();
+  const { signupError } = statusError;
+
+  let data, emailError, passwordError;
+  if (signupError.message) {
+    data = JSON.parse(signupError.message);
+    emailError = data.errors.email.join(' ');
+    passwordError = data.errors.password.join(' ');
+  }
+
+  console.log(emailError, passwordError);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -20,11 +31,16 @@ const SingUp = () => {
   };
 
   return (
-    <div>
-      <Form onChange={handleChange} onSubmit={handleSubmit}>
+    <>
+      <Form
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        email={emailError}
+        password={passwordError}
+      >
         Sing up
       </Form>
-    </div>
+    </>
   );
 };
 

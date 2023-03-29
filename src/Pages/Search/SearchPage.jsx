@@ -5,7 +5,7 @@ import CategoryList from './CategoryList';
 import Price from './Price';
 import NotFound from './NotFound';
 import SearchInput from './SearchInput';
-import { Container, IconBack, IconSearch, InputContainer } from './ui';
+import { Container, IconBack, IconSearch, InputContainer, Result } from './ui';
 
 // filter by name
 function filterByName(products, name) {
@@ -141,7 +141,9 @@ const SearchPage = ({ onGetID }) => {
             </>
           )}
           <Container>
-            {filter.name && <p>Found {filteredProducts.length} results</p>}
+            {filter.name && (
+              <Result>Found {filteredProducts.length} results</Result>
+            )}
             <ProductList products={filteredProducts} onGetID={onGetID} />
           </Container>
         </>
