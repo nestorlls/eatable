@@ -14,7 +14,7 @@ Projecto frontend para de busqueda de platos de todo tipo y gusto.
 
 Clonar el proyecto usando el siguiente código, copia (sin el $) y pega en tu terminal. 
 ```
-$ 
+$ git@github.com:nestorlls/eatable_react.git
 ```
 
 se creará la carpeta "eatable_react", dirigite a la carpeta con el comando:
