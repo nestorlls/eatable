@@ -15,7 +15,7 @@ const SingUp = () => {
   if (signupError.message) {
     data = JSON.parse(signupError.message);
     emailError = data.errors.email.join(' ');
-    passwordError = data.errors.password.join(' ');
+    passwordError = data?.errors?.password.join(' ');
   }
 
   console.log(emailError, passwordError);
@@ -36,8 +36,7 @@ const SingUp = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}
         email={emailError}
-        password={passwordError}
-      >
+        password={passwordError}>
         Sing up
       </Form>
     </>
