@@ -8,7 +8,7 @@
 
 Projecto frontend para de busqueda de platos de todo tipo y gusto.
 
-*Te invito a experimentar e interactuar y que lo disfrutes*
+*Te invito a experimentar e interactuar y que lo disfrutes* link: https://eatable-paul.netlify.app/
 
 ## Instalación 🤓
 
